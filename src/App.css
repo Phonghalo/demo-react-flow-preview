@@ -1,0 +1,248 @@
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.app-header a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.app-header a:hover {
+  text-decoration: underline;
+}
+
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.app-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 0;
+}
+
+@media (max-width: 960px) {
+  .app-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(420px, 55vh) minmax(420px, 55vh);
+  }
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-right: 1px solid var(--border);
+}
+
+.pane:last-child {
+  border-right: none;
+}
+
+@media (max-width: 960px) {
+  .pane {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pane:last-child {
+    border-bottom: none;
+  }
+}
+
+.pane-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.pane-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.pane-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.pane-dot--editor {
+  background: var(--editor-accent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--editor-accent) 55%, transparent);
+}
+
+.pane-dot--preview {
+  background: var(--preview-accent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--preview-accent) 55%, transparent);
+}
+
+.pane-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.preview-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  background: repeating-linear-gradient(
+      -45deg,
+      var(--bg),
+      var(--bg) 6px,
+      color-mix(in srgb, var(--surface) 88%, transparent) 6px,
+      color-mix(in srgb, var(--surface) 88%, transparent) 12px
+    );
+}
+
+.preview-surface {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid color-mix(in srgb, var(--preview-accent) 45%, var(--border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--preview-accent) 20%, transparent),
+    0 18px 48px rgba(0, 0, 0, 0.45);
+}
+
+/* RF mặc định width/height 100% — cần khung cha đo được bằng pixel (inline style trong App.tsx). */
+.preview-surface .react-flow {
+  width: 100%;
+  height: 100%;
+}
+
+.preview-surface--image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min(100%, 520px);
+  min-height: 200px;
+}
+
+.preview-img {
+  border-radius: 6px;
+  max-width: 100%;
+  height: auto;
+}
+
+.preview-loading {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 2rem;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.btn:hover {
+  border-color: var(--muted);
+  background: var(--surface);
+}
+
+.btn--primary {
+  border-color: var(--accent-dim);
+  background: color-mix(in srgb, var(--accent) 22%, var(--surface-2));
+  color: var(--text);
+}
+
+.btn--primary:hover {
+  background: color-mix(in srgb, var(--accent) 32%, var(--surface-2));
+}
+
+.panel-card {
+  background: color-mix(in srgb, var(--bg) 40%, var(--surface-2));
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  max-width: 220px;
+  font-size: 0.8125rem;
+}
+
+.panel-card__note {
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.panel-card label {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.panel-card input {
+  width: 100%;
+  padding: 0.35rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.panel-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.hint {
+  font-size: 0.72rem;
+  color: var(--muted);
+  max-width: 14rem;
+  line-height: 1.35;
+}
