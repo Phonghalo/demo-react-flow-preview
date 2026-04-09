@@ -8,11 +8,14 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@xyflow/react": "^12.10.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-flow-preview": "^0.2.1"
+    "react-flow-preview": "^0.2.3"
   },
   "devDependencies": {
     "@types/react": "^19.1.0",
